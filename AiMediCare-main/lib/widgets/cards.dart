@@ -1,4 +1,3 @@
-import 'package:ai_medicare/Network/endPoints.dart';
 import 'package:flutter/material.dart';
 
 Widget defultCard(
@@ -18,12 +17,12 @@ Widget defultCard(
         },
         child: Center(
             child: Padding(
-          padding: const EdgeInsets.only(top: 50.0),
+          padding: const EdgeInsets.only(top: 25.0),
           child: Column(
             children: <Widget>[
               Image.asset(
                 image,
-                width: 80.0,
+                width: 60.0,
               ),
               const SizedBox(
                 height: 20.0,
@@ -35,7 +34,7 @@ Widget defultCard(
                   style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 25.0),
+                      fontSize: 18.0),
                 ),
               ),
             ],

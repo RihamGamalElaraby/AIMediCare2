@@ -104,16 +104,16 @@ class DoctorMainPage extends StatelessWidget {
                                       nav: 'BreastCancerPage',
                                       image: 'assets/ribbon_1852085.png',
                                       text: 'Breast Cancer Detection')),
-                              SizedBox(
-                                  width: 180.0,
-                                  height: 240.0,
-                                  child: defultCard(
-                                      color: const Color(0xff9ECCFA),
-                                      context: context,
-                                      nav: 'HeartAttackPage',
-                                      image:
-                                          'assets/healthy-heart_10251170.png',
-                                      text: 'Heart Disease Detection')),
+                              // SizedBox(
+                              //     width: 180.0,
+                              //     height: 240.0,
+                              //     child: defultCard(
+                              //         color: const Color(0xff9ECCFA),
+                              //         context: context,
+                              //         nav: 'HeartAttackPage',
+                              //         image:
+                              //             'assets/healthy-heart_10251170.png',
+                              //         text: 'Heart Disease Detection')),
                             ],
                           ),
                         ),

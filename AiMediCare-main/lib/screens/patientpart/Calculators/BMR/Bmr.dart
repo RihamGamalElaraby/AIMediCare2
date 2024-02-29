@@ -191,69 +191,76 @@ class BmrPage extends StatelessWidget {
                       if (formKey.currentState!.validate()) {
                         double? heightValue =
                             double.tryParse(heightController.text);
-                        int? agevalue = int.tryParse(ageContoller.text);
+                        int? ageValue = int.tryParse(ageContoller.text);
                         double? weightValue =
                             double.tryParse(weightController.text);
+
                         if (CacheHelper.getData(key: 'token') != null) {
-                          agevalue =
-                              agevalue?.round(); // Convert agevalue to integer
-                          BmrCubit.get(context)
-                              .postBmr(
-                                  heightValue!.ceilToDouble(),
-                                  weightValue!.ceilToDouble(),
-                                  agevalue!.round(),
-                                  genderController.toString(),
-                                  activityControler.toString(),
-                                  CacheHelper.getData(key: 'token'))
-                              .then((value) {
-                            if (BmrCubit.get(context).model != null) {
-                              showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return AlertDialog(
-                                    title: Text(
-                                      'Result',
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    content: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          'BMR: ${BmrCubit.get(context).model!.bmr!.value!}',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text(
-                                          'BMRdescribtion:  ${BmrCubit.get(context).model!.bmr!.description!}',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text(
-                                          'tdee:  ${BmrCubit.get(context).model!.tdee!.value!}',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text(
-                                          'tdeedescription:  ${BmrCubit.get(context).model!.tdee!.description!}',
-                                          style: TextStyle(fontSize: 16),
+                          // Ensure height, weight, and age values are not null
+                          if (heightValue != null &&
+                              weightValue != null &&
+                              ageValue != null) {
+                            BmrCubit.get(context)
+                                .postBmr(
+                              heightValue,
+                              weightValue,
+                              ageValue,
+                              genderController ??
+                                  '', // Handle null case for genderController
+                              activityControler ??
+                                  '', // Handle null case for activityControler
+                              CacheHelper.getData(key: 'token') ?? '',
+                            )
+                                .then((value) {
+                              if (BmrCubit.get(context).model != null) {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                        'Result',
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text(
+                                            'BMR: ${BmrCubit.get(context).model!.bmr!.value!}',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          Text(
+                                            'BMR Description:  ${BmrCubit.get(context).model!.bmr!.description!}',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          Text(
+                                            'TDEE:  ${BmrCubit.get(context).model!.tdee!.value!}',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                          Text(
+                                            'TDEE Description:  ${BmrCubit.get(context).model!.tdee!.description!}',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text(
+                                            'Done',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
                                         ),
                                       ],
-                                    ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text(
-                                          'Done',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }
-                          }).catchError((error) {});
+                                    );
+                                  },
+                                );
+                              }
+                            }).catchError((error) {});
+                          }
                         }
                       }
                     },
@@ -275,7 +282,7 @@ class BmrPage extends StatelessWidget {
                         Text('Calculate BMR'),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

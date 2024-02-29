@@ -22,6 +22,7 @@ class _HealthCalcuPageState extends State<HealthCalcuPage> {
 
     return Scaffold(
         appBar: AppBar(
+          // Color.fromARGB(255, 13, 91, 201),
           actions: [
             IconButton(
                 onPressed: () async {
@@ -91,8 +92,8 @@ class _HealthCalcuPageState extends State<HealthCalcuPage> {
                           runSpacing: 20.0,
                           children: <Widget>[
                             SizedBox(
-                                width: 180.0,
-                                height: 230.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -101,8 +102,8 @@ class _HealthCalcuPageState extends State<HealthCalcuPage> {
                                     image: 'assets/bmi.png',
                                     text: 'BMI')),
                             SizedBox(
-                                width: 180.0,
-                                height: 230.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -111,8 +112,8 @@ class _HealthCalcuPageState extends State<HealthCalcuPage> {
                                     image: 'assets/calories.png',
                                     text: 'BMR')),
                             SizedBox(
-                                width: 180.0,
-                                height: 240.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -121,8 +122,8 @@ class _HealthCalcuPageState extends State<HealthCalcuPage> {
                                     image: 'assets/water-bottle.png',
                                     text: 'Water Intake')),
                             SizedBox(
-                                width: 180.0,
-                                height: 240.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,

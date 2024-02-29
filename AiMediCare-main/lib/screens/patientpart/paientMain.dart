@@ -5,6 +5,7 @@ import 'package:ai_medicare/cubit/states.dart';
 import 'package:ai_medicare/widgets/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PaientMainPage extends StatelessWidget {
   var scaffoldKey = GlobalKey<ScaffoldState>();
@@ -12,6 +13,7 @@ class PaientMainPage extends StatelessWidget {
   var height, width;
 
   PaientMainPage({super.key});
+  final Uri _url = Uri.parse('https://startling-lily-dae612.netlify.app/');
 
   @override
   Widget build(BuildContext context) {
@@ -97,8 +99,8 @@ class PaientMainPage extends StatelessWidget {
                           runSpacing: 20.0,
                           children: <Widget>[
                             SizedBox(
-                                width: 180.0,
-                                height: 230.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -107,8 +109,8 @@ class PaientMainPage extends StatelessWidget {
                                     image: 'assets/symptoms.png',
                                     text: 'Symptoms Checker')),
                             SizedBox(
-                                width: 180.0,
-                                height: 230.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -117,8 +119,8 @@ class PaientMainPage extends StatelessWidget {
                                     image: 'assets/health-check.png',
                                     text: 'Health Calculators')),
                             SizedBox(
-                                width: 180.0,
-                                height: 240.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -127,8 +129,8 @@ class PaientMainPage extends StatelessWidget {
                                     image: 'assets/emergency-call.png',
                                     text: 'Emergancy Call')),
                             SizedBox(
-                                width: 180.0,
-                                height: 240.0,
+                                width: 150,
+                                height: 200.0,
                                 child: defultCard(
                                     color: const Color(0xff9ECCFA),
                                     context: context,
@@ -161,8 +163,8 @@ class PaientMainPage extends StatelessWidget {
                         const SizedBox(
                           height: 80,
                         ),
-                        Image.asset('assets/medical-team_1.png',
-                            width: double.infinity, height: 250),
+                        // Image.asset('assets/medical-team_1.png',
+                        // width: double.infinity, height: 250),
                         const SizedBox(
                           height: 50,
                         ),
@@ -188,7 +190,7 @@ class PaientMainPage extends StatelessWidget {
                             ),
                           ),
                           child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: _launcherUrl,
                             child: const Text(
                               'LET\'S START NOW',
                               style:
@@ -213,5 +215,11 @@ class PaientMainPage extends StatelessWidget {
         ),
       );
     });
+  }
+
+  Future<void> _launcherUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launsh $_url');
+    }
   }
 }

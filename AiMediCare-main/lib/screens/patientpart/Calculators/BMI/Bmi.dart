@@ -60,7 +60,11 @@ class BmiPage extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: 150,
+                  ),
                   smallTextField(
                       controller: heightController,
                       validator: (value) {

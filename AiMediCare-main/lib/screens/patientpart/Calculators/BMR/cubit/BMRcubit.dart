@@ -23,8 +23,8 @@ class BmrCubit extends Cubit<BmrStates> {
         data: {
           "age": age,
           "gender": gender,
-          "weight": weight,
-          "height": hieght,
+          "weight": weight?.round(), // Round weight to integer
+          "height": hieght?.round(),
           "activityLevel": activityLevel,
         },
         token: token,
